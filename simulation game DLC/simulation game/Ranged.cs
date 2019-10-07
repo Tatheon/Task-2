@@ -17,17 +17,17 @@ namespace simulation_game
         {
             if (Health <= 0)
             {
-                return "Ranged: DEAD";
+                return "Ranged: DEAD";//if dead
             }
             else
             {
-                return "Ranged unit: "  +name + " \n Health: " + Health + "\n Range: " + attackRange + "\n Speed: " + speed + "\n Team: " + team;
+                return "Ranged unit: " + name + " \n Health: " + Health + "\n Range: " + attackRange + "\n Speed: " + speed + "\n Team: " + team;//if alive show stats
             }
         }
 
         public override string SaveData()
         {
-            return $"R,{Xvalue},{Yvalue},{Team},{Health},{speed},{MaxHealth}";
+            return $"R,{Xvalue},{Yvalue},{Team},{Health},{speed},{MaxHealth}";//returns all of the units info to be saved
         }
     }
 }

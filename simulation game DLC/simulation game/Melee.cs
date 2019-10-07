@@ -19,18 +19,18 @@ namespace simulation_game
         {
             if (Health <= 0)
             {
-                return "Melee: DEAD";
+                return "Melee: DEAD";//if dead
             }
             else
             {
-                return "Melee unit: " + name + " \n Health: " + Health + "\n Range: " + attackRange + "\n Speed: " + speed + "\n Team: " + team;
+                return "Melee unit: " + name + " \n Health: " + Health + "\n Range: " + attackRange + "\n Speed: " + speed + "\n Team: " + team;//if alive show stats
             }
 
         }
 
         public override string SaveData()
         {
-            return $"M,{Xvalue},{Yvalue},{Team},{Health},{speed},{MaxHealth}";
+            return $"M,{Xvalue},{Yvalue},{Team},{Health},{speed},{MaxHealth}";//returns all of the units info to be saved
         }
     }
 }
