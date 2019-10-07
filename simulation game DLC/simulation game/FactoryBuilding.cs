@@ -43,12 +43,12 @@ namespace simulation_game
 
         public override Unit DoBuildingFunction()
         {
-            return MakeUnit();
+            return MakeUnit();//makes and returns a unit to be added into the map
         }
 
         public override string SaveData()
         {
-            return $"F,{XPos},{YPos},{Team},{spawnPoint},{ProductionSpeed},{Health}";
+            return $"F,{XPos},{YPos},{Team},{spawnPoint},{ProductionSpeed},{Health}";//returns with all stats of the building
         }
 
 
