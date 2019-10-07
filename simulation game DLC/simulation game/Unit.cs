@@ -183,7 +183,7 @@ namespace simulation_game
                 {
                     Xdistance = unitFocus.Xvalue - Xvalue;
                     Ydistance = unitFocus.Yvalue - Yvalue;
-                    distance = Math.Sqrt(Xdistance * Xdistance + Ydistance * Ydistance);
+                    distance = Math.Sqrt(Xdistance * Xdistance + Ydistance * Ydistance);//finds distance between the units
                     if (distance < closestDistance)
                     {
                         closestDistance = distance;
@@ -197,7 +197,7 @@ namespace simulation_game
             }
         }
 
-        public virtual void Kill()
+        public virtual void Kill()//it does exactly what it says
         {
             Symbol = "X";
             IsDead = true;
