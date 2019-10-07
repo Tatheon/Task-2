@@ -9,8 +9,8 @@ namespace simulation_game
     class ResourceBuilding : Building
     {
         private string resourceType;
-        private int resourcesGenerated, resourcesPerRound, resourcePoolRemaining;  
-        public ResourceBuilding(int x, int y, string team, int health = 20, string symbol = "R", int ResourcePerRound = 1, int resourcePoolRemaining = 0) : base(x, y, health, team, symbol)
+        private int resourcesGenerated, resourcesPerRound, resourcePoolRemaining;
+        public ResourceBuilding(int x, int y, string team, int health = 20, string symbol = "R", int ResourcePerRound = 1, int resourcePoolRemaining = 10) : base(x, y, health, team, symbol)
         {
             this.resourcesPerRound = ResourcePerRound;
         }
@@ -18,22 +18,35 @@ namespace simulation_game
         public override void Kill()
         {
             symbol = "X";
-            
+
         }
 
         public override string ToString()
         {
-            return "Building: Resource generation \n Health: "+health+"\n Team: "+team+"\n Resources avalible: "+ resourcePoolRemaining;
+            if (Health <= 0)
+            {
+                return "Building: Destroyed";
+            }
+            else
+            {
+                return "Building: Resource generation \n Health: " + health + "\n Team: " + team + "\n Resources avalible: " + resourcesGenerated;
+            }
+
         }
 
         public void GenerateResource()
         {
-            resourcePoolRemaining += resourcesPerRound ;
+            resourcesGenerated += resourcesPerRound;//add what was generated
         }
 
         public override Unit DoBuildingFunction()
         {
-            GenerateResource();
+            if (resourcePoolRemaining > 0)
+            {
+                GenerateResource();
+                resourcePoolRemaining -= resourcesPerRound;//generate recource then subtract what was generated from how much it can produce in total
+            }
+
             return null;
         }
 
