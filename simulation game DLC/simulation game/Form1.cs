@@ -12,7 +12,7 @@ namespace simulation_game
 {
     public partial class Form1 : Form
     {
-        GameEngine game = new GameEngine();
+        GameEngine game = new GameEngine();//create the engine
         Timer round = new Timer();
         public Form1()
         {
@@ -20,8 +20,8 @@ namespace simulation_game
 
             DrawMap();
             ShowUnits();
-            initTimer();
-            
+            initTimer();//creates timer
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -35,11 +35,11 @@ namespace simulation_game
             round.Tick += TimerTickHandeler;
         }
 
-        void TimerTickHandeler(object sender, EventArgs e)
+        void TimerTickHandeler(object sender, EventArgs e)//every tick on the timer, this must happen
         {
-            game.Run();
-            game.world.UpdateWorld();
-            DrawMap();
+            game.Run();//game logic will do their tasks
+            game.world.UpdateWorld();//update map
+            DrawMap();//show the map
             ShowUnits();
 
             if (game.gameOver)
@@ -51,7 +51,7 @@ namespace simulation_game
 
         }
 
-        public void DrawMap()
+        public void DrawMap()//display map
         {
             lblMap.Text = "";
             for (int y = 0; y < 20; y++)
@@ -64,7 +64,7 @@ namespace simulation_game
             }
         }
 
-        public void ShowUnits()
+        public void ShowUnits()//display unit and building stats
         {
             lblPlayerStats.Text = game.Rounds + "\n";
             foreach (Building building in game.world.buildings)
